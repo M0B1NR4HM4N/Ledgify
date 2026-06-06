@@ -1,0 +1,13 @@
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+backend/.env
+backend/audit_log.jsonl
+
+# Node / Next
+node_modules/
+.next/
+
+# OS
+.DS_Store
