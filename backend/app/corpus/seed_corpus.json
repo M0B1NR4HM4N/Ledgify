@@ -1,0 +1,146 @@
+[
+  {
+    "id": "IFRS15-9",
+    "framework": "IFRS",
+    "standard_id": "IFRS 15",
+    "paragraph_id": "9",
+    "heading_path": "Revenue from Contracts with Customers > Identifying the contract",
+    "effective_date": "2018-01-01",
+    "text": "An entity accounts for a contract with a customer only when the contract is approved and the parties are committed to perform, each party's rights to the goods or services are identifiable, the payment terms are identifiable, the contract has commercial substance, and it is probable that the entity will collect the consideration to which it will be entitled."
+  },
+  {
+    "id": "IFRS15-31",
+    "framework": "IFRS",
+    "standard_id": "IFRS 15",
+    "paragraph_id": "31",
+    "heading_path": "Revenue from Contracts with Customers > Satisfaction of performance obligations",
+    "effective_date": "2018-01-01",
+    "text": "An entity recognises revenue when (or as) it satisfies a performance obligation by transferring a promised good or service to a customer. An asset is transferred when (or as) the customer obtains control of that asset."
+  },
+  {
+    "id": "IFRS15-35",
+    "framework": "IFRS",
+    "standard_id": "IFRS 15",
+    "paragraph_id": "35",
+    "heading_path": "Revenue from Contracts with Customers > Performance obligations satisfied over time",
+    "effective_date": "2018-01-01",
+    "text": "An entity transfers control over time, and so satisfies a performance obligation over time, if the customer simultaneously receives and consumes the benefits as the entity performs, the entity's performance creates or enhances an asset the customer controls, or the asset created has no alternative use and the entity has an enforceable right to payment for performance completed to date."
+  },
+  {
+    "id": "IFRS16-22",
+    "framework": "IFRS",
+    "standard_id": "IFRS 16",
+    "paragraph_id": "22",
+    "heading_path": "Leases > Recognition",
+    "effective_date": "2019-01-01",
+    "text": "At the commencement date a lessee recognises a right-of-use asset and a lease liability for leases other than short-term leases and leases of low-value assets, for which a recognition exemption may be elected."
+  },
+  {
+    "id": "IFRS16-26",
+    "framework": "IFRS",
+    "standard_id": "IFRS 16",
+    "paragraph_id": "26",
+    "heading_path": "Leases > Initial measurement of the lease liability",
+    "effective_date": "2019-01-01",
+    "text": "At the commencement date a lessee measures the lease liability at the present value of the lease payments that are not paid at that date, discounted using the interest rate implicit in the lease or, if that cannot be readily determined, the lessee's incremental borrowing rate."
+  },
+  {
+    "id": "IFRS16-99",
+    "framework": "IFRS",
+    "standard_id": "IFRS 16",
+    "paragraph_id": "99",
+    "heading_path": "Leases > Sale and leaseback transactions",
+    "effective_date": "2019-01-01",
+    "text": "To determine whether the transfer of an asset in a sale and leaseback is accounted for as a sale, an entity applies the requirements of IFRS 15 for determining when a performance obligation is satisfied."
+  },
+  {
+    "id": "IFRS16-100",
+    "framework": "IFRS",
+    "standard_id": "IFRS 16",
+    "paragraph_id": "100",
+    "heading_path": "Leases > Sale and leaseback > Transfer is a sale",
+    "effective_date": "2019-01-01",
+    "text": "If the transfer qualifies as a sale, the seller-lessee measures the right-of-use asset arising from the leaseback as the proportion of the previous carrying amount that relates to the right of use retained, and recognises only the amount of any gain or loss that relates to the rights transferred to the buyer-lessor."
+  },
+  {
+    "id": "IAS36-9",
+    "framework": "IFRS",
+    "standard_id": "IAS 36",
+    "paragraph_id": "9",
+    "heading_path": "Impairment of Assets > Identifying an asset that may be impaired",
+    "effective_date": "2004-03-31",
+    "text": "An entity assesses at the end of each reporting period whether there is any indication that an asset may be impaired. If any such indication exists, the entity estimates the recoverable amount of the asset."
+  },
+  {
+    "id": "IAS36-18",
+    "framework": "IFRS",
+    "standard_id": "IAS 36",
+    "paragraph_id": "18",
+    "heading_path": "Impairment of Assets > Measuring recoverable amount",
+    "effective_date": "2004-03-31",
+    "text": "Recoverable amount is the higher of an asset's fair value less costs of disposal and its value in use."
+  },
+  {
+    "id": "IAS37-14",
+    "framework": "IFRS",
+    "standard_id": "IAS 37",
+    "paragraph_id": "14",
+    "heading_path": "Provisions, Contingent Liabilities and Contingent Assets > Recognition",
+    "effective_date": "1999-07-01",
+    "text": "A provision is recognised when an entity has a present obligation as a result of a past event, it is probable that an outflow of resources embodying economic benefits will be required to settle the obligation, and a reliable estimate can be made of the amount."
+  },
+  {
+    "id": "ISA315-26",
+    "framework": "ISA",
+    "standard_id": "ISA 315",
+    "paragraph_id": "26",
+    "heading_path": "Identifying and Assessing the Risks of Material Misstatement > Identifying risks",
+    "effective_date": "2021-12-15",
+    "text": "The auditor identifies and assesses the risks of material misstatement at the financial statement level and at the assertion level for classes of transactions, account balances and disclosures, to provide a basis for designing and performing further audit procedures."
+  },
+  {
+    "id": "ISA315-28",
+    "framework": "ISA",
+    "standard_id": "ISA 315",
+    "paragraph_id": "28",
+    "heading_path": "Identifying and Assessing the Risks of Material Misstatement > Significant risks",
+    "effective_date": "2021-12-15",
+    "text": "The auditor determines whether any of the assessed risks of material misstatement are significant risks, based on the inherent risk factors and the degree to which the risk relates to matters such as complexity, subjectivity, change, uncertainty or susceptibility to management bias or fraud."
+  },
+  {
+    "id": "ISA330-6",
+    "framework": "ISA",
+    "standard_id": "ISA 330",
+    "paragraph_id": "6",
+    "heading_path": "The Auditor's Responses to Assessed Risks > Overall responses",
+    "effective_date": "2009-12-15",
+    "text": "The auditor designs and implements overall responses to address the assessed risks of material misstatement at the financial statement level."
+  },
+  {
+    "id": "ISA330-18",
+    "framework": "ISA",
+    "standard_id": "ISA 330",
+    "paragraph_id": "18",
+    "heading_path": "The Auditor's Responses to Assessed Risks > Substantive procedures",
+    "effective_date": "2009-12-15",
+    "text": "Irrespective of the assessed risks of material misstatement, the auditor designs and performs substantive procedures for each material class of transactions, account balance and disclosure."
+  },
+  {
+    "id": "ISA540-13",
+    "framework": "ISA",
+    "standard_id": "ISA 540",
+    "paragraph_id": "13",
+    "heading_path": "Auditing Accounting Estimates and Related Disclosures > Risk assessment procedures",
+    "effective_date": "2019-12-15",
+    "text": "When obtaining an understanding of the entity, the auditor obtains an understanding of how management identifies the need for, and applies, the methods, assumptions and data used in making accounting estimates, including the estimation uncertainty involved."
+  },
+  {
+    "id": "ISA500-6",
+    "framework": "ISA",
+    "standard_id": "ISA 500",
+    "paragraph_id": "6",
+    "heading_path": "Audit Evidence > Sufficient appropriate audit evidence",
+    "effective_date": "2009-12-15",
+    "text": "The auditor designs and performs audit procedures that are appropriate in the circumstances for the purpose of obtaining sufficient appropriate audit evidence, where sufficiency is the measure of quantity and appropriateness is the measure of quality, that is, relevance and reliability."
+  }
+]
