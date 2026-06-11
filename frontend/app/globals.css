@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================================
+   Ledger brand palette — warm paper / walnut / gold (OKLCH).
+   Light mode only. Token names follow the shadcn convention.
+   ========================================================================= */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-parchment: var(--parchment);
+  --color-ink: var(--ink);
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", "Libre Caslon Text", Georgia, serif;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: oklch(0.97 0.012 80);   /* cream */
+  --foreground: oklch(0.18 0.025 40);   /* deep ink brown */
+  --card: oklch(0.985 0.008 80);
+  --card-foreground: oklch(0.18 0.025 40);
+  --popover: oklch(0.985 0.008 80);
+  --popover-foreground: oklch(0.18 0.025 40);
+  --primary: oklch(0.28 0.045 45);      /* dark walnut */
+  --primary-foreground: oklch(0.97 0.012 80);
+  --secondary: oklch(0.92 0.018 75);
+  --secondary-foreground: oklch(0.22 0.035 40);
+  --muted: oklch(0.93 0.012 80);
+  --muted-foreground: oklch(0.45 0.025 50);
+  --accent: oklch(0.72 0.13 75);        /* warm gold */
+  --accent-foreground: oklch(0.18 0.025 40);
+  --destructive: oklch(0.5 0.18 28);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.86 0.018 70);
+  --input: oklch(0.9 0.015 75);
+  --ring: oklch(0.72 0.13 75);
+  --gold: oklch(0.72 0.13 75);
+  --parchment: oklch(0.94 0.025 80);
+  --ink: oklch(0.18 0.025 40);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(at 0% 0%, color-mix(in oklab, var(--gold) 10%, transparent), transparent 50%),
+      radial-gradient(at 100% 100%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 55%);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  ::selection { background: color-mix(in oklab, var(--gold) 35%, transparent); }
+}
+
+@layer utilities {
+  .rule-gold {
+    background-image: linear-gradient(90deg, transparent, var(--gold), transparent);
+    height: 1px;
+  }
+  .prose-scholar h1, .prose-scholar h2, .prose-scholar h3 {
+    font-family: var(--font-serif);
+    color: var(--ink);
+    margin-top: 1.25em;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+  }
+  .prose-scholar h1 { font-size: 1.5rem; }
+  .prose-scholar h2 { font-size: 1.25rem; }
+  .prose-scholar h3 { font-size: 1.1rem; font-weight: 600; }
+  .prose-scholar p { margin: 0.6em 0; line-height: 1.65; }
+  .prose-scholar ul, .prose-scholar ol { margin: 0.5em 0 0.5em 1.25em; line-height: 1.65; }
+  .prose-scholar ul { list-style: disc; }
+  .prose-scholar ol { list-style: decimal; }
+  .prose-scholar li { margin: 0.2em 0; }
+  .prose-scholar strong { color: var(--ink); font-weight: 600; }
+  .prose-scholar code {
+    background: color-mix(in oklab, var(--gold) 15%, transparent);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  .prose-scholar a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-scholar blockquote {
+    border-left: 3px solid var(--gold);
+    padding-left: 1em;
+    margin: 0.75em 0;
+    color: var(--muted-foreground);
+    font-style: italic;
+  }
+}
+
+/* Refined, paper-toned scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--muted-foreground) 35%, transparent);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-rise { animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
