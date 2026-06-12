@@ -49,8 +49,8 @@ export default function Home() {
           {health && (
             <>
               <span className="text-border">·</span>
-              <span className={`h-1.5 w-1.5 rounded-full ${health.generation === "claude" ? "bg-accent" : "bg-muted-foreground"}`} />
-              {health.generation === "claude" ? health.answer_model : "offline stub"}
+              <span className={`h-1.5 w-1.5 rounded-full ${health.generation !== "offline-stub" ? "bg-accent" : "bg-muted-foreground"}`} />
+              {health.generation === "offline-stub" ? "offline stub" : health.answer_model}
             </>
           )}
         </span>

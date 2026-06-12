@@ -24,6 +24,7 @@ export interface Health {
   milestone: string;
   corpus_chunks: number;
   frameworks: string[];
+  provider: string;
   generation: string;
   answer_model: string;
 }

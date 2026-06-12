@@ -6,6 +6,7 @@ whole pipeline is end-to-end runnable without credentials. The stub still only
 """
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 
 from app.config import get_settings
@@ -47,8 +48,80 @@ def _generate_stub(question: str, chunks: list[Chunk]) -> Generation:
     return Generation("\n".join(lines), citations, model="offline-stub", used_stub=True)
 
 
+def _generate_gemini(question: str, frameworks: list[str], period: str | None, chunks: list[Chunk]) -> Generation:
+    """Google Gemini path.
+
+    Gemini has no native-citation API, so we ask for structured JSON
+    (answer + cited chunk_id/quote) and feed those quotes through the same
+    citation verifier the Claude path uses. Grounding is bounded by instructing
+    the model to cite only the provided chunk_ids.
+    """
+    s = get_settings()
+    from google import genai
+    from google.genai import types
+
+    by_id = {c.id: i for i, c in enumerate(chunks)}
+    corpus_block = "\n\n".join(
+        f"[{c.id}] {c.framework} {c.label} — {c.heading_path}\n{c.text}" for c in chunks
+    )
+    user_text = (
+        build_user_text(question, frameworks, period)
+        + "\n\nRetrieved standards — cite ONLY these, by chunk_id:\n"
+        + corpus_block
+        + "\n\nReturn JSON: an 'answer' grounded only in the above, and 'citations' "
+        "as a list of {chunk_id, quote} where quote is text copied verbatim from that "
+        "chunk. If the chunks do not cover the question, return an empty citations list."
+    )
+
+    schema = {
+        "type": "object",
+        "properties": {
+            "answer": {"type": "string"},
+            "citations": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "chunk_id": {"type": "string"},
+                        "quote": {"type": "string"},
+                    },
+                    "required": ["chunk_id", "quote"],
+                },
+            },
+        },
+        "required": ["answer", "citations"],
+    }
+
+    client = genai.Client(api_key=s.gemini_api_key)
+    resp = client.models.generate_content(
+        model=s.gemini_model,
+        contents=user_text,
+        config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+            response_mime_type="application/json",
+            response_schema=schema,
+            temperature=0,
+        ),
+    )
+    data = json.loads(resp.text)
+
+    citations: list[RawCitation] = []
+    for c in data.get("citations", []):
+        idx = by_id.get(c.get("chunk_id", ""))
+        if idx is not None:
+            citations.append(RawCitation(document_index=idx, cited_text=c.get("quote", "")))
+
+    return Generation(data.get("answer", "").strip(), citations, model=s.gemini_model, used_stub=False)
+
+
 def generate(question: str, frameworks: list[str], period: str | None, chunks: list[Chunk]) -> Generation:
     s = get_settings()
+
+    if s.provider == "gemini":
+        if not s.gemini_api_key:
+            return _generate_stub(question, chunks)
+        return _generate_gemini(question, frameworks, period, chunks)
+
     if not s.anthropic_api_key:
         return _generate_stub(question, chunks)
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 from functools import lru_cache
 from pathlib import Path
 
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -16,12 +17,24 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", env_prefix="LEDGER_", extra="ignore")
 
+    # --- Generation provider ---
+    provider: str = "anthropic"                     # "anthropic" | "gemini"
+
     # --- Claude API (see ARCHITECTURE.md §6) ---
     anthropic_api_key: str | None = None
     answer_model: str = "claude-opus-4-8"          # correctness-sensitive main path
     lookup_model: str = "claude-sonnet-4-6"         # cost/speed fallback per-endpoint
     max_tokens: int = 16000
     thinking_enabled: bool = True
+
+    # --- Google Gemini (alternative provider) ---
+    # Note: Gemini has no native-citation API, so the Gemini path uses
+    # structured-output JSON (answer + cited chunk_id/quote) and reuses the
+    # existing citation verifier. GEMINI_API_KEY is read without the LEDGER_
+    # prefix to match common tooling.
+    gemini_api_key: str | None = Field(default=None, validation_alias="GEMINI_API_KEY")
+    gemini_model: str = "gemini-2.5-pro"
+    google_cloud_project: str | None = Field(default=None, validation_alias="GOOGLE_CLOUD_PROJECT")
 
     # --- Retrieval (see ARCHITECTURE.md §5) ---
     top_k: int = 6                                  # chunks kept after fusion

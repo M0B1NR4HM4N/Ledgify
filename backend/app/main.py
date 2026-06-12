@@ -24,13 +24,24 @@ app.add_middleware(
 def health() -> dict:
     corpus = load_corpus()
     frameworks = sorted({c.framework for c in corpus})
+
+    if _settings.provider == "gemini":
+        live = bool(_settings.gemini_api_key)
+        generation = "gemini" if live else "offline-stub"
+        model = _settings.gemini_model
+    else:
+        live = bool(_settings.anthropic_api_key)
+        generation = "claude" if live else "offline-stub"
+        model = _settings.answer_model
+
     return {
         "status": "ok",
         "milestone": "M1 — Grounded Q&A (single framework)",
         "corpus_chunks": len(corpus),
         "frameworks": frameworks,
-        "generation": "claude" if _settings.anthropic_api_key else "offline-stub",
-        "answer_model": _settings.answer_model,
+        "provider": _settings.provider,
+        "generation": generation,
+        "answer_model": model,
     }
 
 
